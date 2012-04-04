@@ -1,0 +1,240 @@
+PLEASE PLEASE ME;1963
+1;1;"I Saw Her Standing There";2:54
+1;2;"Misery";1:49
+1;3;"Anna (Go to Him)";2:57
+1;4;"Chains";2:26
+1;5;"Boys";2:27
+1;6;"Ask Me Why";2:26
+1;7;"Please Please Me";2:03
+2;1;"Love Me Do";2:23
+2;2;"P.S. I Love You";2:04
+2;3;"Baby It's You";2:40
+2;4;"Do You Want to Know a Secret";1:59
+2;5;"A Taste of Honey";2:03
+2;6;"There's a Place";1:51
+2;7;"Twist and Shout";2:37
+WITH THE BEATLES;1963
+1;1;"It Won't Be Long";2:13
+1;2;"All I've Got to Do";2:03
+1;3;"All My Loving";2:08
+1;4;"Don't Bother Me";2:28
+1;5;"Little Child";1:46
+1;6;"Till There Was You";2:14
+1;7;"Please Mister Postman";2:34
+2;1;"Roll Over Beethoven";2:45
+2;2;"Hold Me Tight";2:32
+2;3;"You Really Got a Hold on Me";3:01
+2;4;"I Wanna Be Your Man";2:00
+2;5;"Devil in Her Heart";2:26
+2;6;"Not a Second Time";2:07
+2;7;"Money (That's What I Want)";2:50
+A HARD DAY'S NIGHT;1964
+1;1;"A Hard Day's Night";2:34
+1;2;"I Should Have Known Better";2:43
+1;3;"If I Fell";2:19
+1;4;"I'm Happy Just to Dance with You";1:56
+1;5;"And I Love Her";2:30
+1;6;"Tell Me Why";2:09
+1;7;"Can't Buy Me Love";2:12
+2;1;"Any Time at All";2:11
+2;2;"I'll Cry Instead";1:46
+2;3;"Things We Said Today";2:35
+2;4;"When I Get Home";2:17
+2;5;"You Can't Do That";2:35
+2;6;"I'll Be Back";2:24
+BEATLES FOR SALE;1964
+1;1;"No Reply";2:15
+1;2;"I'm a Loser";2:31
+1;3;"Baby's in Black";2:02
+1;4;"Rock and Roll Music";2:32
+1;5;"I'll Follow the Sun";1:46
+1;6;"Mr. Moonlight";2:33
+1;7;"Kansas City/Hey-Hey-Hey-Hey!";2:33
+2;1;"Eight Days a Week";2:44
+2;2;"Words of Love";2:12
+2;3;"Honey Don't";2:55
+2;4;"Every Little Thing";2:01
+2;5;"I Don't Want to Spoil the Party";2:33
+2;6;"What You're Doing";2:30
+2;7;"Everybody's Trying to Be My Baby";2:23
+HELP!;1965
+1;1;"Help!";2:18
+1;2;"The Night Before";2:33
+1;3;"You've Got to Hide Your Love Away";2:08
+1;4;"I Need You";2:28
+1;5;"Another Girl";2:05
+1;6;"You're Going to Lose That Girl";2:17
+1;7;"Ticket to Ride";3:10
+2;1;"Act Naturally";2:29
+2;2;"It's Only Love";1:54
+2;3;"You Like Me Too Much";2:35
+2;4;"Tell Me What You See";2:36
+2;5;"I've Just Seen a Face";2:04
+2;6;"Yesterday";2:03
+2;7;"Dizzy Miss Lizzy";2:53
+RUBBER SOUL;1965
+1;1;"Drive My Car";2:25
+1;2;"Norwegian Wood (This Bird Has Flown)";2:01
+1;3;"You Won't See Me";3:18
+1;4;"Nowhere Man";2:40
+1;5;"Think for Yourself";2:16
+1;6;"The Word";2:41
+1;7;"Michelle";2:40
+2;1;"What Goes On";2:47
+2;2;"Girl";2:30
+2;3;"I'm Looking Through You";2:23
+2;4;"In My Life";2:24
+2;5;"Wait";2:12
+2;6;"If I Needed Someone";2:20
+2;7;"Run for Your Life";2:18
+REVOLVER;1966
+1;1;"Taxman";2:39
+1;2;"Eleanor Rigby";2:08
+1;3;"I'm Only Sleeping";3:02
+1;4;"Love You To";3:01
+1;5;"Here, There and Everywhere";2:26
+1;6;"Yellow Submarine";2:40
+1;7;"She Said She Said";2:37
+2;1;"Good Day Sunshine";2:10
+2;2;"And Your Bird Can Sing";2:02
+2;3;"For No One";2:01
+2;4;"Doctor Robert";2:15
+2;5;"I Want to Tell You";2:30
+2;6;"Got to Get You into My Life";2:31
+2;7;"Tomorrow Never Knows";2:57
+SGT. PEPPER'S LONELY HEARTS CLUB BAND;1967
+1;1;"Sgt. Pepper's Lonely Hearts Club Band";2:02
+1;2;"With a Little Help from My Friends";2:44
+1;3;"Lucy in the Sky with Diamonds";3:28
+1;4;"Getting Better";2:48
+1;5;"Fixing a Hole";2:36
+1;6;"She's Leaving Home";3:35
+1;7;"Being for the Benefit of Mr. Kite!";2:37
+2;1;"Within You Without You";5:04
+2;2;"When I'm Sixty-Four";2:37
+2;3;"Lovely Rita";2:42
+2;4;"Good Morning Good Morning";2:41
+2;5;"Sgt. Pepper's Lonely Hearts Club Band (Reprise)";1:19
+2;6;"A Day in the Life";5:39
+MAGICAL MYSTERY TOUR;1967
+1;1;"Magical Mystery Tour";2:48
+1;2;"The Fool on the Hill";3:00
+1;3;"Flying";2:16
+1;4;"Blue Jay Way";3:50
+1;5;"Your Mother Should Know";2:33
+1;6;"I Am the Walrus";4:35
+2;1;"Hello, Goodbye";3:24
+2;2;"Strawberry Fields Forever";4:05
+2;3;"Penny Lane";3:00
+2;4;"Baby, You're a Rich Man";3:07
+2;5;"All You Need Is Love";3:57
+THE BEATLES (AKA. THE WHITE ALBUM);1968
+1;1;"Back in the U.S.S.R.";2:43
+1;2;"Dear Prudence";3:56
+1;3;"Glass Onion";2:17
+1;4;"Ob-La-Di, Ob-La-Da";3:08
+1;5;"Wild Honey Pie";0:52
+1;6;"The Continuing Story of Bungalow Bill";3:14
+1;7;"While My Guitar Gently Weeps";4:45
+1;8;"Happiness Is a Warm Gun";2:43
+2;1;"Martha My Dear";2:28
+2;2;"I'm So Tired";2:03
+2;3;"Blackbird";2:18
+2;4;"Piggies";2:04
+2;5;"Rocky Raccoon";3:33
+2;6;"Don't Pass Me By";3:51
+2;7;"Why Don't We Do It in the Road?";1:41
+2;8;"I Will";1:46
+2;9;"Julia";2:54
+3;1;"Birthday";2:42
+3;2;"Yer Blues";4:01
+3;3;"Mother Nature's Son";2:48
+3;4;"Everybody's Got Something to Hide Except Me and My Monkey";2:24
+3;5;"Sexy Sadie";3:15
+3;6;"Helter Skelter";4:29
+3;7;"Long, Long, Long";3:04
+4;1;"Revolution 1";4:15
+4;2;"Honey Pie";2:41
+4;3;"Savoy Truffle";2:54
+4;4;"Cry Baby Cry";3:02
+4;5;"Revolution 9";8:22
+4;6;"Good Night";3:11
+YELLOW SUBMARINE;1969
+1;1;"Yellow Submarine";2:40
+1;2;"Only a Northern Song";3:24
+1;3;"All Together Now";2:11
+1;4;"Hey Bulldog";3:11
+1;5;"It's All Too Much";6:25
+1;6;"All You Need Is Love";3:51
+2;1;"Pepperland";2:21
+2;2;"Sea of Time";3:00
+2;3;"Sea of Holes";2:17
+2;4;"Sea of Monsters";3:37
+2;5;"March of the Meanies";2:22
+2;6;"Pepperland Laid Waste";2:19
+2;7;"Yellow Submarine in Pepperland";2:13
+ABBEY ROAD;1969
+1;1;"Come Together";4:20
+1;2;"Something";3:03
+1;3;"Maxwell's Silver Hammer";3:27
+1;4;"Oh! Darling";3:26
+1;5;"Octopus's Garden";2:51
+1;6;"I Want You (She's So Heavy)";7:47
+2;1;"Here Comes the Sun";3:05
+2;2;"Because";2:45
+2;3;"You Never Give Me Your Money";4:02
+2;4;"Sun King";2:26
+2;5;"Mean Mr. Mustard";1:06
+2;6;"Polythene Pam";1:12
+2;7;"She Came In Through the Bathroom Window";1:57
+2;8;"Golden Slumbers";1:31
+2;9;"Carry That Weight";1:36
+2;10;"The End";2:05
+2;11;"Her Majesty";0:23
+LET IT BE;1970
+1;1;"Two of Us";3:37
+1;2;"Dig a Pony";3:55
+1;3;"Across the Universe";3:48
+1;4;"I Me Mine";2:26
+1;5;"Dig It";0:50
+1;6;"Let It Be";4:03
+1;7;"Maggie Mae";0:40
+2;1;"I've Got a Feeling";3:38
+2;2;"One After 909";2:54
+2;3;"The Long and Winding Road";3:38
+2;4;"For You Blue";2:32
+2;5;"Get Back";3:09
+PAST MASTERS, VOLUMES ONE & TWO;1988
+1;1;"Love Me Do";2:24
+1;2;"From Me to You";1:57
+1;3;"Thank You Girl";2:04
+1;4;"She Loves You";2:21
+1;5;"I'll Get You";2:06
+1;6;"I Want to Hold Your Hand";2:25
+1;7;"This Boy";2:16
+1;8;"Komm, Gib Mir Deine Hand";2:27
+1;9;"Sie Liebt Dich";2:20
+2;1;"Long Tall Sally";2:03
+2;2;"I Call Your Name";2:09
+2;3;"Slow Down";2:56
+2;4;"Matchbox";1:59
+2;5;"I Feel Fine";2:18
+2;6;"She's a Woman";3:03
+2;7;"Bad Boy";2:20
+2;8;"Yes It Is";2:43
+2;9;"I'm Down";2:30
+3;1;"Day Tripper";2:48
+3;2;"We Can Work It Out";2:15
+3;3;"Paperback Writer";2:18
+3;4;"Rain";3:02
+3;5;"Lady Madonna";2:17
+3;6;"The Inner Light";2:37
+3;7;"Hey Jude";7:08
+3;8;"Revolution";3:21
+4;1;"Get Back";3:15
+4;2;"Don't Let Me Down";3:35
+4;3;"The Ballad of John and Yoko";2:59
+4;4;"Old Brown Shoe";3:20
+4;5;"Across the Universe";3:49
+4;6;"Let It Be";3:50
+4;7;"You Know My Name (Look Up the Number)";4:19

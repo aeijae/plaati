@@ -1,0 +1,14 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                   controllers.Application.index
+GET     /measure                            controllers.Application.measure
+
+GET     /albums                             controllers.MusicController.albums
+
+GET     /rating/:user                       controllers.RatingController.ratingsForUser(user: String)
+POST    /rating/:user/:songId/:rating       controllers.RatingController.rateSong(songId: Int, rating: Int, user: String)
+
+GET     /assets/*file                       controllers.Assets.at(path="/public", file)
