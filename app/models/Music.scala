@@ -5,7 +5,6 @@ import reflect.BeanProperty
 import org.codehaus.jackson.annotate.JsonProperty
 import play.modules.mongodb.jackson.MongoDB
 import net.vz.mongodb.jackson.ObjectId
-import java.util.ArrayList
 import scala.collection.JavaConversions._
 
 class Song(@BeanProperty @JsonProperty("id") val id: Int,
@@ -20,12 +19,12 @@ class Album(@JsonProperty("id") @ObjectId @Id id: String,
             @BeanProperty @JsonProperty("name") val name: String,
             @BeanProperty @JsonProperty("artist") val artist: String,
             @BeanProperty @JsonProperty("year") val year: Short,
-            @BeanProperty @JsonProperty("songs") val songs: java.util.ArrayList[Song] = null,
+            @BeanProperty @JsonProperty("songs") val songs: java.util.List[Song] = null,
             @BeanProperty @JsonProperty("notes") val notes: String = "") {
 
   @ObjectId @Id def getId = id
 
-  def this(name: String, artist: String, year: Short, songs: ArrayList[Song]) {
+  def this(name: String, artist: String, year: Short, songs: java.util.List[Song]) {
     this(null, name, artist, year, songs)
   }
 }
@@ -45,7 +44,7 @@ object Music {
 
   def songs = albums.foldLeft(List[Song]()){ (b, a) => b ++ a.getSongs }
 
-  def songById(songId: String) = Option(db.find().is("songs.id", songId))
+  def songById(songId: Int) = songs.find(_.id == songId)
 }
 
 

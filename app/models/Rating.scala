@@ -27,5 +27,5 @@ object Rating {
 
   def findByUserAndSong(user: String, songId: Long) = Option(db.findOne(DBQuery.is("user", user).is("song", songId)))
 
-  def findBySong(user: String, songId: Long) = Option(db.findOne(DBQuery.is("song", songId)))
+  def findBySong(songId: Int) = db.find().is("song", songId).toArray
 }

@@ -1,7 +1,8 @@
 package controllers
 
-import play.api._
 import play.api.mvc._
+import models.Music
+import scala.collection.JavaConverters._
 
 object Application extends Controller {
   
@@ -10,7 +11,7 @@ object Application extends Controller {
   }
 
   def measure = Action {
-    Ok("Rate the songs")
+    Ok(views.html.measure(Music.albums.asScala.toList))
   }
   
 }

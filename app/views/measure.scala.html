@@ -1,0 +1,11 @@
+@(albums: List[Album])
+
+<div class="albums">
+    @albums.map { album =>
+    <div class="album">@album.name (@album.year)
+        @album.songs.map { song =>
+            <div class="song">@song.name</div>
+        }
+    </div>
+    }
+</div>

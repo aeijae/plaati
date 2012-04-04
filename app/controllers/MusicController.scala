@@ -24,7 +24,7 @@ object MusicController extends Controller {
     Ok(mapper.writeValueAsString(Music.songs.asJava))
   }
 
-  def songById(id: String) = Action {
+  def songById(id: Int) = Action {
     Music.songById(id) match {
       case Some(song) => Ok(mapper.writeValueAsString(song))
       case None => NotFound

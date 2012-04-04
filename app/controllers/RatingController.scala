@@ -19,4 +19,8 @@ object RatingController extends Controller {
   def ratingsForUser(user: String) = Action {
     Ok(mapper.writeValueAsString(Rating.findByUser(user)))
   }
+
+  def ratingsForSong(songId: Int) = Action {
+    Ok(mapper.writeValueAsString(Rating.findBySong(songId)))
+  }
 }

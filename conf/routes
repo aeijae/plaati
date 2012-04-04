@@ -10,9 +10,10 @@ GET     /albums                             controllers.MusicController.albums
 GET     /albums/:albumId                    controllers.MusicController.albumById(albumId: String)
 
 GET     /songs                              controllers.MusicController.songs
-GET     /songs/:songId                      controllers.MusicController.songById(songId: String)
+GET     /songs/:songId                      controllers.MusicController.songById(songId: Int)
 
-GET     /rating/:user                       controllers.RatingController.ratingsForUser(user: String)
+GET     /rating/user/:user                  controllers.RatingController.ratingsForUser(user: String)
+GET     /rating/song/:songId                controllers.RatingController.ratingsForSong(songId: Int)
 POST    /rating/:user/:songId/:rating       controllers.RatingController.rateSong(songId: Int, rating: Int, user: String)
 
 GET     /assets/*file                       controllers.Assets.at(path="/public", file)
