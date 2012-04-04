@@ -7,9 +7,10 @@ import play.modules.mongodb.jackson.MongoDB
 import net.vz.mongodb.jackson.{DBQuery, ObjectId}
 
 class Rating(@ObjectId @Id val id: String,
-             @BeanProperty @JsonProperty("song") val song: Int,
+             @BeanProperty @JsonProperty("songId") val song: Int,
              @BeanProperty @JsonProperty("rating") val rating: Int,
              @BeanProperty @JsonProperty("user") val user: String) {
+
   @ObjectId @Id def getId = id
 
   def this(song: Int, rating: Int, user: String) = this(null, song, rating, user)
@@ -25,4 +26,6 @@ object Rating {
   def findByUser(user: String) = db.find().is("user", user).toArray
 
   def findByUserAndSong(user: String, songId: Long) = Option(db.findOne(DBQuery.is("user", user).is("song", songId)))
+
+  def findBySong(user: String, songId: Long) = Option(db.findOne(DBQuery.is("song", songId)))
 }

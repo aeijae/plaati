@@ -5,48 +5,47 @@ import reflect.BeanProperty
 import org.codehaus.jackson.annotate.JsonProperty
 import play.modules.mongodb.jackson.MongoDB
 import net.vz.mongodb.jackson.ObjectId
+import java.util.ArrayList
+import scala.collection.JavaConversions._
 
-class Song(@ObjectId @Id id: Int,
+class Song(@BeanProperty @JsonProperty("id") val id: Int,
            @BeanProperty @JsonProperty("name") val name: String,
-           @BeanProperty @JsonProperty("album") val album: String,
            @BeanProperty @JsonProperty("lengthInSecs") val length: Int,
            @BeanProperty @JsonProperty("index") val index: Short,
            @BeanProperty @JsonProperty("side") val side: Short = 0,
            @BeanProperty @JsonProperty("notes") val notes: String = "",
            @BeanProperty @JsonProperty("url") val url: String = "") {}
 
-class Album(@ObjectId @Id id: Int,
+class Album(@JsonProperty("id") @ObjectId @Id id: String,
             @BeanProperty @JsonProperty("name") val name: String,
             @BeanProperty @JsonProperty("artist") val artist: String,
             @BeanProperty @JsonProperty("year") val year: Short,
+            @BeanProperty @JsonProperty("songs") val songs: java.util.ArrayList[Song] = null,
             @BeanProperty @JsonProperty("notes") val notes: String = "") {
+
+  @ObjectId @Id def getId = id
+
+  def this(name: String, artist: String, year: Short, songs: ArrayList[Song]) {
+    this(null, name, artist, year, songs)
+  }
 }
 
-object Album {
+object Music {
   import play.api.Play.current
 
   private lazy val db = MongoDB.collection("albums", classOf[Album], classOf[String])
 
-  def save(album: Album) { db.save(album) }
+  def saveAlbum(album: Album) { db.save(album) }
 
-  def getAlbums() = db.find().toArray
+  def albums = db.find().toArray
 
-  def dropAlbums() = db.drop()
-  }
+  def dropAlbums = db.drop()
 
-object Song {
-  import play.api.Play.current
+  def albumById(albumId: String) = Option(db.findOneById(albumId))
 
-  private lazy val db = MongoDB.collection("songs", classOf[Song], classOf[String])
+  def songs = albums.foldLeft(List[Song]()){ (b, a) => b ++ a.getSongs }
 
-  def save(song: Song) { db.save(song) }
-
-  def getSongs() = db.find().toArray
-
-  def dropSongs() = db.drop()
-
-  def songsForAlbum()
+  def songById(songId: String) = Option(db.find().is("songs.id", songId))
 }
-
 
 

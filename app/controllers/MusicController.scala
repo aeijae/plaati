@@ -2,23 +2,32 @@ package controllers
 
 import org.codehaus.jackson.map.ObjectMapper
 import play.api.mvc.{Action, Controller}
+import models.{Song, Music, Album}
 import scala.collection.JavaConversions._
-import models.{Song, Album}
+import scala.collection.JavaConverters._
 
 object MusicController extends Controller {
   val mapper = new ObjectMapper()
 
   def albums = Action {
-    val albums = Album.getAlbums
-
-    val mappedAlbums = albums.map { a: Album =>
-      val jl = new java.util.ArrayList[Song] (a.getSongs().size)
-      a.getSongs().foreach(jl.add(_))
-
-      new Album(a.getName(), a.getArtist(), a.getYear(), jl)
-    }
-
-    Ok(mapper.writeValueAsString(albums))
+    Ok(mapper.writeValueAsString(Music.albums))
   }
 
+  def albumById(id: String) = Action {
+    Music.albumById(id) match {
+      case Some(album) => Ok(mapper.writeValueAsString(album))
+      case None => NotFound
+    }
+  }
+
+  def songs = Action {
+    Ok(mapper.writeValueAsString(Music.songs.asJava))
+  }
+
+  def songById(id: String) = Action {
+    Music.songById(id) match {
+      case Some(song) => Ok(mapper.writeValueAsString(song))
+      case None => NotFound
+    }
+  }
 }
