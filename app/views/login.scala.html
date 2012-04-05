@@ -1,0 +1,48 @@
+@(form: Form[(String,String)])(implicit flash: Flash)
+
+<html>
+    <head>
+        <title>Scaati</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    </head>
+    <body>
+        
+        <header>
+            <a href="@routes.RatingController.rate" id="logo">Scaati</a>
+        </header>
+        
+        @helper.form(routes.Application.authenticate) {
+            
+            <h1>Sign in</h1>
+            
+            @form.globalError.map { error =>
+                <p class="error">
+                    @error.message
+                </p>
+            }
+            
+            @flash.get("success").map { message =>
+                <p class="success">
+                    @message
+                </p>
+            }
+            
+            <p>
+                <input type="username" name="username" placeholder="User name" id="username" value="@form("username").value">
+            </p>
+            <p>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </p>
+            <p>
+                <button type="submit" id="loginbutton">Login</button>
+            </p>
+            
+        }
+
+        <p><a href="@routes.Application.register">Register new user</a></p>
+        
+    </body>
+</html>
+    
+
+

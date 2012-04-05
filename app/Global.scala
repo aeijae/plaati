@@ -1,4 +1,4 @@
-import models.{Music, Album, Song}
+import models.{User, Music, Album, Song}
 import play.api._
 import scala.io.Source._
 import scala.collection.JavaConversions._
@@ -17,6 +17,7 @@ object Global extends GlobalSettings {
     var songs = List[Song]()
 
     fromFile("conf/data.txt", "utf-8").getLines.zipWithIndex foreach  (e => e._1 match {
+
       case AlbumNamePattern(albumName, albumYear) => {
         println("Creating album " + albumName)
         currentAlbum match {
@@ -28,11 +29,16 @@ object Global extends GlobalSettings {
         songs = List()
         currentAlbum = Some((albumName, albumYear.toShort))
       }
+
       case SongNamePattern(songSide, songIndex, songName, lengthMin, lengthSec) => {
         songs = songs ::: List(new Song(e._2, songName, lengthMin.toShort * 60 + lengthSec.toShort, songIndex.toShort, songSide.toShort))
       }
+
       case str => println("No match for line " + str)
     })
+
     currentAlbum.map(a => a).foreach(a => Music.saveAlbum(new Album(a._1, "Beatles", a._2, songs.asJava)))
+
+    User.save(new User("admin", "adminpwd", true))
   }
 }

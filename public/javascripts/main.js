@@ -1,13 +1,22 @@
 $(function() {
-    var createRater = function() {
-        var html = '';
+    $('.rating').bind('click', function() {
+        var self = $(this),
+            rating = self.attr('id'),
+            song = self.parents('.song').attr('id');
 
-        for (var i = 0; i < 10; i++) {
-            html += '<span class="rating" id="' + (i + 1) + '">' + (i + 1) + '</span>';
-        }
-        return html;
-    };
+        $.post('/rating/' + song + '/' + rating, function() {
+            self.siblings().removeClass('selected');
+            self.addClass('selected');
+        })
+    });
 
-    $('.rater').html(createRater());
+    $('.comment').bind('keypress', function() {
 
+    });
+
+    $('textarea').bind('focus', function() {
+        this.style.background = '#e5fff3';
+    }).bind('blur', function() {
+        this.style.background = 'white';
+    });
 });

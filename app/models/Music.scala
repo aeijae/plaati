@@ -6,6 +6,7 @@ import org.codehaus.jackson.annotate.JsonProperty
 import play.modules.mongodb.jackson.MongoDB
 import net.vz.mongodb.jackson.ObjectId
 import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 class Song(@BeanProperty @JsonProperty("id") val id: Int,
            @BeanProperty @JsonProperty("name") val name: String,
@@ -36,7 +37,7 @@ object Music {
 
   def saveAlbum(album: Album) { db.save(album) }
 
-  def albums = db.find().toArray
+  def albums = db.find().toArray.asScala
 
   def dropAlbums = db.drop()
 

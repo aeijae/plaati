@@ -5,15 +5,15 @@ import reflect.BeanProperty
 import org.codehaus.jackson.annotate.JsonProperty
 import play.modules.mongodb.jackson.MongoDB
 import net.vz.mongodb.jackson.{DBQuery, ObjectId}
+import scala.collection.JavaConverters._
 
-class Rating(@ObjectId @Id val id: String,
+class Rating(@ObjectId @Id val id: String = null,
              @BeanProperty @JsonProperty("songId") val song: Int,
-             @BeanProperty @JsonProperty("rating") val rating: Int,
-             @BeanProperty @JsonProperty("user") val user: String) {
+             @BeanProperty @JsonProperty("rating") val rating: Int = -1,
+             @BeanProperty @JsonProperty("user") val user: String,
+             @BeanProperty @JsonProperty("comment") val comment: String = "") {
 
   @ObjectId @Id def getId = id
-
-  def this(song: Int, rating: Int, user: String) = this(null, song, rating, user)
 }
 
 object Rating {
@@ -23,9 +23,11 @@ object Rating {
 
   def save(rating: Rating) { db.save(rating) }
 
-  def findByUser(user: String) = db.find().is("user", user).toArray
+  def ratings = db.find().toArray.asScala
 
-  def findByUserAndSong(user: String, songId: Long) = Option(db.findOne(DBQuery.is("user", user).is("song", songId)))
+  def ratingsByUser(user: String) = db.find().is("user", user).toArray.asScala
 
-  def findBySong(songId: Int) = db.find().is("song", songId).toArray
+  def ratingsByUserAndSong(user: String, songId: Long) = Option(db.findOne(DBQuery.is("user", user).is("song", songId)))
+
+  def ratingsBySong(songId: Int) = db.find().is("song", songId).toArray.asScala
 }
