@@ -1,31 +1,31 @@
 $(function() {
-    $('.rating').bind('click', function() {
+    var updateRating = function(newRating) {
         var self = $(this),
-            rating = self.attr('data-rating'),
             parentSong = self.parents('.song'),
             song = parentSong.attr('id');
 
-        $.post('/rating/' + song + '/' + rating, function() {
-            self.addClass('selected')
-                .siblings().removeClass('selected');
-            parentSong.removeClass('not-rated');
+        $.post('/rating/' + song + '/' + newRating, function() {
+            self.siblings().removeClass('selected');
 
             if (parentSong.siblings('.not-rated').length == 0) {
                 parentSong.parents('.album').removeClass('not-rated');
             }
+            if (newRating == -1) {
+                self.siblings().removeClass('selected');
+                parentSong.addClass('not-rated').parents('.album').addClass('not-rated');
+            } else {
+                self.addClass('selected');
+                parentSong.removeClass('not-rated');
+            }
         })
+    }
+
+    $('.rating').bind('click', function() {
+        updateRating.call(this, $(this).attr('data-rating'));
     });
 
     $('.remove-rating').bind('click', function() {
-        var self = $(this),
-            parentSong = self.parents('.song'),
-            song = parentSong.attr('id'),
-            comment = parentSong.find('.comment').attr('value');
-
-        $.post('/rating/' + song + '/-1', function() {
-            self.siblings().removeClass('selected');
-            parentSong.addClass('not-rated').parents('.album').addClass('not-rated');
-        })
+        updateRating.call(this, -1);
     });
 
     $('.comment').bind('keyup', function() {
