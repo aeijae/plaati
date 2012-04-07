@@ -23,5 +23,6 @@ GET     /songs/:songId                      controllers.MusicController.songById
 GET     /rating                             controllers.RatingController.ratings
 GET     /rating/song/:songId                controllers.RatingController.ratingsForSong(songId: Int)
 POST    /rating/:songId/:rating             controllers.RatingController.rateSong(songId: Int, rating: Int)
+POST    /rating/:songId                     controllers.RatingController.addComment(songId: Int)
 
 GET     /assets/*file                       controllers.Assets.at(path="/public", file)

@@ -1,10 +1,25 @@
-@(albums: Seq[Album], user: User, ratings: Map[Int, Int])
+@(albums: Seq[Album], user: User, ratings: Map[Int, (Int, String)])
 
 @rater(userRating: Option[Int]) = {
     @for(r <- 1 to 10) {
         @defining("rating" + (if (userRating.getOrElse(-1) == r) " selected" else "")) { classes =>
             <span class='@classes' id='@r'>@r</span>
-        }}}
+        }
+    }
+}
+
+@albumClasses(album: Album) = @{
+    List("album").mkString(" ")
+}
+
+@songClasses(userRating: Option[Int]) = @{
+    val songClasses = List("song")
+    userRating match {
+        case Some(r) if r > 0 => songClasses
+        case _ => ("not-rated" :: songClasses).mkString(" ")
+    }
+}
+
 
 @main("Rate songs") {
     <div class='header'>
@@ -14,20 +29,21 @@
     </div>
 
     <div class="albums">
-    @albums.map { album =>
-    <div class="album">
-        <div class="album-name">@album.name (@album.year)</div>
-        @album.songs.map { song =>
-        <div class="song" id="@song.id">
-            <div class="song-name">@song.name</div>
-            <div>
-                <span class="rater">@rater(ratings.get(song.id))</span>
-                <textarea class="comment" rows="3" cols="50"></textarea>
-            </div>
+        @albums.map { album =>
+        <div class="@albumClasses(album)"">
+            <div class="album.name">@album.name (@album.year)</div>
+            @album.songs.map { song =>
+                @defining(ratings.get(song.id)) { rating =>
+                <div class="@songClasses(rating.map(_._1))" id="@song.id">
+                    <div class="song-name">@song.name</div>
+                    <div>
+                        <span class="rater">@rater(rating.map(_._1))</span>
+                        <textarea class="comment" rows="2" cols="50">@rating.map(_._2)</textarea>
+                    </div>
+                </div>
+                }
+            }
         </div>
         }
     </div>
-    }
-    </div>
-
 }

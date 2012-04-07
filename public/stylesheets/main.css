@@ -1,3 +1,8 @@
+.header {
+    height: 30px;
+    width: 700px;
+}
+
 html {
     font-family: arial;
 }
@@ -16,6 +21,7 @@ body {
 .album-name {
     font-weight: bold;
     padding-bottom: 5px;
+    border: 0px;
 }
 
 .song {
@@ -23,12 +29,21 @@ body {
     border: 1px solid;
     border-radius: 5px;
     margin-bottom: 2px;
+    background-color: #7fffd4;
+}
+
+.not-rated {
+    background-color: #ffc0cb;
 }
 
 .song-name {
     padding-bottom: 5px;
     margin-left: 5px;
     margin-top: 3px;
+}
+
+.rater {
+    padding-left: 5px;
 }
 
 .rating {
@@ -49,14 +64,20 @@ body {
     margin-right: 5px;
     border: 2px solid #cccccc;
     resize: none;
+    font-family: Tahoma, sans-serif;
 }
 
-.header {
-    height: 50px;
-    width: 700px;
-}
 
 #user {
     position: relative;
-    left: 500px;
+}
+
+#user span {
+    position: absolute;
+    left: 10px;
+}
+
+#user a {
+    position: absolute;
+    right: 5px;
 }

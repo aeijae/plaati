@@ -2,16 +2,23 @@ $(function() {
     $('.rating').bind('click', function() {
         var self = $(this),
             rating = self.attr('id'),
-            song = self.parents('.song').attr('id');
+            parentSong = self.parents('.song');
+            song = parentSong.attr('id');
 
         $.post('/rating/' + song + '/' + rating, function() {
             self.siblings().removeClass('selected');
             self.addClass('selected');
+            parentSong.removeClass('not-rated');
         })
     });
 
-    $('.comment').bind('keypress', function() {
+    $('.comment').bind('keyup', function() {
+        var self = $(this),
+            comment = self.attr('value'),
+            song = self.parents('.song').attr('id');
 
+        $.post('/rating/' + song, { comment:comment }, function() {
+        });
     });
 
     $('textarea').bind('focus', function() {
