@@ -26,9 +26,12 @@ body {
 
 .song {
     height: 93px;
-    border: 1px solid;
+    border: 2px solid #444444;
     border-radius: 5px;
     margin-bottom: 2px;
+}
+
+.song, .album {
     background-color: #7fffd4;
 }
 
@@ -52,6 +55,11 @@ body {
     cursor: pointer;
 }
 
+.remove-rating {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
 .selected {
     font-weight: bold;
     border: 1px solid;
@@ -68,6 +76,10 @@ body {
     border-radius: 5px;
 }
 
+.comment:focus {
+    background-color: #e5fff3;
+}
+
 
 #user {
     position: relative;
@@ -82,3 +94,4 @@ body {
     position: absolute;
     right: 5px;
 }
+

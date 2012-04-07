@@ -3,13 +3,19 @@
 @rater(userRating: Option[Int]) = {
     @for(r <- 1 to 10) {
         @defining("rating" + (if (userRating.getOrElse(-1) == r) " selected" else "")) { classes =>
-            <span class='@classes' id='@r'>@r</span>
+            <span class='@classes' data-rating='@r'>@r</span>
         }
     }
+    <span class='remove-rating'>X</span>
 }
 
 @albumClasses(album: Album) = @{
-    List("album").mkString(" ")
+    val albumClasses = List("album")
+    if (album.songs.forall(s => ratings.get(s.getId).isDefined && ratings.get(s.getId).get._1 > 0)) {
+        albumClasses
+    } else {
+        ("not-rated" :: albumClasses).mkString(" ")
+    }
 }
 
 @songClasses(userRating: Option[Int]) = @{
@@ -32,7 +38,7 @@
         @albums.map { album =>
             <div class='@albumClasses(album)'>
 
-                <div class='album.name'>@album.name (@album.year)</div>
+                <div class='album-name'>@album.name (@album.year)</div>
 
                 @album.songs.map { song =>
                     @defining(ratings.get(song.id)) { rating =>
@@ -40,7 +46,7 @@
                             <div class='song-name'>@song.name</div>
                             <div>
                                 <span class='rater'>@rater(rating.map(_._1))</span>
-                                <textarea class='comment' rows='2' cols='50'>@rating.map(_._2)</textarea>
+                                <textarea class='comment' rows='2' cols='48'>@rating.map(_._2)</textarea>
                             </div>
                         </div>
                     }

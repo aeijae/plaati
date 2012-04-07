@@ -22,7 +22,7 @@ object RatingController extends Controller with Secured {
     Rating.save(
       Rating.ratingsByUserAndSong(username, songId) match {
         case Some(oldRating : Rating) =>
-          new Rating(oldRating.getId, songId, rating, username)
+          new Rating(oldRating.getId, songId, rating, username, oldRating.comment)
 
         case None =>
           new Rating(song = songId, user = username, rating = rating)
