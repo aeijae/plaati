@@ -1,14 +1,14 @@
 @(form: Form[(String,String)])(implicit flash: Flash)
 
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
-        <title>Scaati</title>
+        <title>Plaati</title>
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
     </head>
     <body>
         
         <header>
-            <a href="@routes.RatingController.rate" id="logo">Scaati</a>
+            <a href="@routes.RatingController.rate" id="logo">Plaati</a>
         </header>
         
         @helper.form(routes.Application.authenticate) {
@@ -40,6 +40,8 @@
         }
 
         <p><a href="@routes.Application.register">Register new user</a></p>
+
+        <p>Or use your <a href="@routes.OpenId.openId?op=Google"><img src="@routes.Assets.at("images/google_account.jpeg")"/></a> account</p>
         
     </body>
 </html>

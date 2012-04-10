@@ -9,6 +9,8 @@ GET     /login                              controllers.Application.login
 POST    /login                              controllers.Application.authenticate
 GET     /logout                             controllers.Application.logout
 
+GET     /openId                             controllers.OpenId.openId
+
 GET     /register                           controllers.Application.register
 POST    /register                           controllers.Application.createUser
 

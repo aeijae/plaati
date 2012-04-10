@@ -9,19 +9,23 @@ import net.vz.mongodb.jackson.{DBQuery, ObjectId}
 
 class User(@ObjectId @Id val id: String,
            @BeanProperty @JsonProperty("username") val username: String,
-           @BeanProperty @JsonProperty("password") val password: String,
-           @BeanProperty @JsonProperty("admin") val admin: Boolean) {
+           @BeanProperty @JsonProperty("password") val password: String = "",
+           @BeanProperty @JsonProperty("admin") val admin: Boolean = false) {
 
   @ObjectId @Id def getId = id
+
 
   def this(username: String, password: String) {
     this(null, username, password, false)
   }
 
+  def this(username: String) {
+    this(username, null)
+  }
+
   def this(username: String, password: String, isAdmin: Boolean) {
     this(null, username, password, isAdmin)
   }
-
 }
 
 object User {

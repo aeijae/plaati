@@ -1,4 +1,6 @@
+import javax.xml.ws.Endpoint
 import models.{User, Music, Album, Song}
+import org.expressme.openid.OpenIdManager
 import play.api._
 import scala.io.Source._
 import scala.collection.JavaConversions._
@@ -9,6 +11,8 @@ object Global extends GlobalSettings {
   val SongNamePattern = """^(\d+);(\d+);"(.*)";(\d+):(\d+)""".r
 
   override def onStart(app: Application) {
+    setUpOpenId
+
     println("Loading data now!")
 
     Music.dropAlbums
@@ -40,5 +44,8 @@ object Global extends GlobalSettings {
     currentAlbum.map(a => a).foreach(a => Music.saveAlbum(new Album(a._1, "Beatles", a._2, songs.asJava)))
 
     User.save(new User("admin", "adminpwd", true))
+  }
+
+  def setUpOpenId {
   }
 }

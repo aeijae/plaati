@@ -844,6 +844,24 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///usr/play-2.0/repository/cache/org.expressme/JOpenId/jars/JOpenId-1.08.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///usr/play-2.0/repository/cache/org.jretrofit/jretrofit/jars/jretrofit-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
@@ -1667,6 +1685,24 @@
       <library>
         <CLASSES>
           <root url="jar:///usr/play-2.0/repository/local/org.easytesting/fest-util/1.1.6/jars/fest-util.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar:///usr/play-2.0/repository/cache/org.expressme/JOpenId/jars/JOpenId-1.08.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar:///usr/play-2.0/repository/cache/org.jretrofit/jretrofit/jars/jretrofit-1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

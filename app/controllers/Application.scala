@@ -7,6 +7,8 @@ import play.api.mvc._
 import play.api.data.Forms._
 
 import models._
+import org.expressme.openid.{OpenIdException, OpenIdManager}
+import java.text.{ParseException, SimpleDateFormat}
 
 
 object Application extends Controller {

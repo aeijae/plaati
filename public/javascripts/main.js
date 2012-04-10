@@ -7,10 +7,10 @@ $(function() {
         $.post('/rating/' + song + '/' + newRating, function() {
             self.siblings().removeClass('selected');
 
-            if (parentSong.siblings('.not-rated').length == 0) {
+            if (parentSong.siblings('.not-rated').length === 0) {
                 parentSong.parents('.album').removeClass('not-rated');
             }
-            if (newRating == -1) {
+            if (newRating === -1) {
                 self.siblings().removeClass('selected');
                 parentSong.addClass('not-rated').parents('.album').addClass('not-rated');
             } else {
