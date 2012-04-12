@@ -1,4 +1,4 @@
-@(albums: Seq[Album], user: User, ratings: Map[Int, (Int, String)])
+@(albums: Seq[Album], user: User, ratings: Map[Int, (Int, String)], stats: UserStats)
 
 @rater(userRating: Option[Int]) = {
     @for(r <- 1 to 10) {
@@ -11,6 +11,7 @@
 
 @albumClasses(album: Album) = @{
     val albumClasses = List("album")
+
     if (album.songs.forall(s => ratings.get(s.getId).isDefined && ratings.get(s.getId).get._1 > 0)) {
         albumClasses
     } else {
@@ -26,12 +27,16 @@
     }
 }
 
-
 @main("Rate songs") {
     <div class='header'>
         <div id='user'>
             <span>@user.username</span><a href='@routes.Application.logout()'>Logout</a>
         </div>
+    </div>
+
+    <div id='rating-stats'>
+        Rated songs: <span id='rated-songs'>@stats.ratedSongs.size</span> / @stats.songs.size&nbsp;
+        Rated albums: <span id='rated-albums'>@stats.ratedAlbums.size</span> / @albums.size&nbsp;
     </div>
 
     <div class='albums'>
@@ -53,5 +58,10 @@
                 }
             </div>
         }
+    </div>
+
+    <div id='navigator'>
+        <img class='up' src='@routes.Assets.at("images/up.png")'/>
+        <img class='down' src='@routes.Assets.at("images/down.png")'/>
     </div>
 }

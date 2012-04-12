@@ -1,60 +1,63 @@
 package controllers
 
-import org.codehaus.jackson.map.ObjectMapper
 import scala.collection.JavaConverters._
 import models._
-import play.api.mvc.{AnyContent, Request, Controller}
+import play.api.mvc.Controller
 
-object RatingController extends Controller with Secured {
-  val mapper = new ObjectMapper()
+object RatingController extends Controller with Secured with JsonWriting {
 
   def rate = IsAuthenticated { username => _ =>
-    User.findByUsername(username).map { user =>
-      Ok(views.html.rate(
-        Music.albums.toList,
-        user,
-        Rating.ratingsByUser(username) map { r => (r.song, (r.rating, r.comment)) } toMap)
-      )
+    User.findByUsername(username).map { user => {
+        val albums = Music.albums.toList
+        val userRatings = Rating.ratingsByUser(username)
+
+        Ok(views.html.rate(
+          albums,
+          user,
+          userRatings map { r => (r.song, (r.rating, r.comment)) } toMap,
+          new UserStats(albums, userRatings))
+        )
+      }
     }.getOrElse(Redirect(routes.Application.login))
   }
 
   def rateSong(songId: Int, rating: Int) = IsAuthenticated { username => _ =>
-    Rating.save(
-      Rating.ratingsByUserAndSong(username, songId) match {
-        case Some(oldRating : Rating) =>
-          new Rating(oldRating.getId, songId, rating, username, oldRating.comment)
-
-        case None =>
-          new Rating(song = songId, user = username, rating = rating)
+    Music.songs.find(_.id == songId) match {
+      case Some(s: Song) => {
+        Rating.save(storedOrNewRating(songId, Some(rating), username, None))
+        Ok
       }
-    )
-    Ok
+      case _ => BadRequest
+    }
   }
 
   def addComment(songId: Int) = IsAuthenticated { username => request => {
       val comment = request.body.asFormUrlEncoded.get("comment")(0)
       Rating.save(
-        Rating.ratingsByUserAndSong(username, songId) match {
-          case Some(oldRating : Rating) =>
-            new Rating(oldRating.getId, songId, oldRating.rating, username, comment)
-
-          case None =>
-            new Rating(song = songId, user = username, comment = comment)
-        }
+        storedOrNewRating(songId, None, username, Some(comment))
       )
       Ok
     }
   }
 
+  def storedOrNewRating(songId: Int, rating: Option[Int], username: String, comment: Option[String]): Rating = {
+    Rating.ratingsByUserAndSong(username, songId) match {
+      case Some(r : Rating) =>
+        new Rating(r.id, songId, rating.getOrElse(r.rating), username, comment.getOrElse(r.comment))
+      case None =>
+        new Rating(songId, rating.getOrElse(-1), username, comment.getOrElse(""))
+    }
+  }
+
   def ratings = IsAuthenticated { username => _ =>
     if (User.isAdmin(username)) {
-      Ok(mapper.writeValueAsString(Rating.ratings.asJava))
+      JsonOk(Rating.ratings.asJava)
     } else {
-      Ok(mapper.writeValueAsString(Rating.ratingsByUser(username).asJava))
+      JsonOk(Rating.ratingsByUser(username).asJava)
     }
   }
 
   def ratingsForSong(songId: Int) = IsAdmin { _ => _ =>
-    Ok(mapper.writeValueAsString(Rating.ratingsBySong(songId).asJava))
+    JsonOk(Rating.ratingsBySong(songId).asJava)
   }
 }

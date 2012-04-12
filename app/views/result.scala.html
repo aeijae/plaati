@@ -1,0 +1,13 @@
+@(stats: SongStat)
+
+@main("Results for %s".format(stats.song.name)) {
+    <div class='result'>
+        <h1>@stats.song.name</h1>
+        <h2>@stats.avgRating</h2>
+        @stats.ratings.map { rating =>
+            <h3>@rating.user</h3>
+            <p>@rating.rating</p>
+            <p>@rating.comment</p>
+        }
+    </div>
+}

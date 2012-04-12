@@ -7,8 +7,7 @@ import play.api.mvc._
 import play.api.data.Forms._
 
 import models._
-import org.expressme.openid.{OpenIdException, OpenIdManager}
-import java.text.{ParseException, SimpleDateFormat}
+import org.codehaus.jackson.map.ObjectMapper
 
 
 object Application extends Controller {
@@ -92,4 +91,20 @@ trait Secured {
     }
   }
 
+}
+
+trait JsonWriting extends Results {
+
+  val mapper = new ObjectMapper()
+
+  def JsonOk(value: Any) = Ok(mapper.writeValueAsString(value))
+}
+
+trait Measure {
+  def measure(f: => Any): Any = {
+    val time = System.currentTimeMillis()
+    val ret = f
+    println(System.currentTimeMillis() - time)
+    ret
+  }
 }

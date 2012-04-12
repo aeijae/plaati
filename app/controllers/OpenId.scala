@@ -10,6 +10,7 @@ import models.User
 import org.expressme.openid.{Base64, OpenIdManager, OpenIdException}
 
 object OpenId extends Controller {
+
   val ONE_HOUR = 3600000L
   val TWO_HOUR = ONE_HOUR * 2L
   val ATTR_MAC = "openid_mac"
@@ -37,7 +38,6 @@ object OpenId extends Controller {
     val endpoint = manager.lookupEndpoint("Google")
     val association = manager.lookupAssociation(endpoint)
     val url = manager.getAuthenticationUrl(endpoint, association)
-
 
     Redirect(url).withSession(ATTR_MAC -> association.getMacKey, ATTR_ALIAS -> endpoint.getAlias)
   }
@@ -71,20 +71,17 @@ object OpenId extends Controller {
     if (nonce == null || nonce.length < 20)
       throw new OpenIdException("Verify failed.")
 
-    var diff = System.currentTimeMillis() - getNonceTime(nonce)
+    var nonceTime = getNonceTime(nonce)
 
-    if (diff < 0)
-      diff = (-diff)
-    if (diff > ONE_HOUR)
+    if (math.abs(System.currentTimeMillis() - nonceTime) > ONE_HOUR)
       throw new OpenIdException("Bad nonce time.")
     if (isNonceExist(nonce))
       throw new OpenIdException("Verify nonce failed.")
 
-    storeNonce(nonce, getNonceTime(nonce) + TWO_HOUR)
+    storeNonce(nonce, nonceTime + TWO_HOUR)
   }
 
   def isNonceExist(nonce: String): Boolean = {
-    println(nonces)
     nonces.contains(nonce)
   }
 

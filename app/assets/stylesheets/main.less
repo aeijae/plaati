@@ -1,21 +1,31 @@
+@rated: #7fffd4;
+@notRated: #ffc0cb;
+@active: #e5fff3;
+@uiWidth: 700px;
+
+.RoundBorder(@radius) {
+    border-radius: @radius;
+    border: 2px solid;
+}
+
 .header {
     height: 30px;
-    width: 700px;
+    width: @uiWidth;
 }
 
 html {
     font-family: arial;
+    padding-left: 5px;
 }
 
 body {
-    width: 700px;
+    width: @uiWidth;
 }
 
-.album {
-    border: 2px solid;
+.album, .result {
+    .RoundBorder(10px);
     padding: 10px;
     margin: 5px;
-    border-radius: 10px;
 }
 
 .album-name {
@@ -31,12 +41,12 @@ body {
     margin-bottom: 2px;
 }
 
-.song, .album {
-    background-color: #7fffd4;
+.song, .album, .result {
+    background-color: @rated;
 }
 
 .not-rated {
-    background-color: #ffc0cb;
+    background-color: @notRated;
 }
 
 .song-name {
@@ -64,34 +74,52 @@ body {
     font-weight: bold;
     border: 1px solid;
     border-radius: 10px;
-    background-color: #e5fff3;
+    background-color: @active;
 }
 
 .comment {
+    .RoundBorder(5px);
     float: right;
     margin-right: 5px;
-    border: 2px solid #cccccc;
     resize: none;
     font-family: Tahoma, sans-serif;
-    border-radius: 5px;
 }
 
 .comment:focus {
-    background-color: #e5fff3;
+    background-color: @active;
 }
-
 
 #user {
     position: relative;
 }
 
-#user span {
-    position: absolute;
-    left: 10px;
-}
-
 #user a {
     position: absolute;
     right: 5px;
+}
+
+#rating-stats {
+    left: 10px;
+}
+
+.result {
+
+}
+
+#navigator {
+    position: fixed;
+    left: @uiWidth + 20;
+    top: 100px;
+    height: 47px;
+    width: 23px;
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
+#navigator img {
+    .RoundBorder(7px);
+    width: 20px;
+    height: 20px;
+    padding: 3px;
 }
 

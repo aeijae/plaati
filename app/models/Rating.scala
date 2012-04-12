@@ -7,13 +7,17 @@ import play.modules.mongodb.jackson.MongoDB
 import net.vz.mongodb.jackson.{DBQuery, ObjectId}
 import scala.collection.JavaConverters._
 
-class Rating(@ObjectId @Id val id: String = null,
+class Rating(@ObjectId @Id val id: String,
              @BeanProperty @JsonProperty("songId") val song: Int,
              @BeanProperty @JsonProperty("rating") val rating: Int = -1,
              @BeanProperty @JsonProperty("user") val user: String,
              @BeanProperty @JsonProperty("comment") val comment: String = "") {
 
   @ObjectId @Id def getId = id
+
+  def this(songId: Int, rating: Int, user: String, comment: String) {
+    this(null, songId, rating, user, comment)
+  }
 }
 
 object Rating {
@@ -27,7 +31,10 @@ object Rating {
 
   def ratingsByUser(user: String) = db.find().is("user", user).toArray.asScala
 
-  def ratingsByUserAndSong(user: String, songId: Long) = Option(db.findOne(DBQuery.is("user", user).is("song", songId)))
+  def ratingsByUserAndSong(user: String, songId: Long) =
+    Option(db.findOne(DBQuery.is("user", user).is("song", songId)))
 
   def ratingsBySong(songId: Int) = db.find().is("song", songId).toArray.asScala
+
+  def ratedRatingsBySong(songId: Int) = ratingsBySong(songId).filter(_.rating > 0)
 }
