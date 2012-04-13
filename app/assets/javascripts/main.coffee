@@ -1,16 +1,10 @@
 $(() ->
-    typingTimer = null
-    xhr = null
+    $('.rating').clickAsObservable()
+        .select((e) -> $(e.target))
+        .subscribe((rating) -> updateRating.call(rating))
 
-    $('.rating').bind('click', () ->
-        updateRating.call($(@), $(@).attr('data-rating'))
-    )
-
-    $('.remove-rating').bind('click', () ->
-        updateRating.call($(@), 0)
-    )
-
-    updateRating = (newRating) ->
+    updateRating = (rating) ->
+        newRating = parseInt(@.attr('data-rating'))
         song = @.parents('.song')
         songId = song.attr('id')
 
