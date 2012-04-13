@@ -9,7 +9,7 @@ import scala.collection.JavaConverters._
 
 class Rating(@ObjectId @Id val id: String,
              @BeanProperty @JsonProperty("songId") val song: Int,
-             @BeanProperty @JsonProperty("rating") val rating: Int = -1,
+             @BeanProperty @JsonProperty("rating") val rating: Int = 0,
              @BeanProperty @JsonProperty("user") val user: String,
              @BeanProperty @JsonProperty("comment") val comment: String = "") {
 

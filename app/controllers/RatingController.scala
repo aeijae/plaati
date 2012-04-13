@@ -45,7 +45,7 @@ object RatingController extends Controller with Secured with JsonWriting {
       case Some(r : Rating) =>
         new Rating(r.id, songId, rating.getOrElse(r.rating), username, comment.getOrElse(r.comment))
       case None =>
-        new Rating(songId, rating.getOrElse(-1), username, comment.getOrElse(""))
+        new Rating(songId, rating.getOrElse(0), username, comment.getOrElse(""))
     }
   }
 

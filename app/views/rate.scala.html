@@ -2,7 +2,7 @@
 
 @rater(userRating: Option[Int]) = {
     @for(r <- 1 to 10) {
-        @defining("rating" + (if (userRating.getOrElse(-1) == r) " selected" else "")) { classes =>
+        @defining("rating" + (if (userRating.getOrElse(0) == r) " selected" else "")) { classes =>
             <span class='@classes' data-rating='@r'>@r</span>
         }
     }
@@ -21,6 +21,7 @@
 
 @songClasses(userRating: Option[Int]) = @{
     val songClasses = List("song")
+
     userRating match {
         case Some(r) if r > 0 => songClasses
         case _ => ("not-rated" :: songClasses).mkString(" ")
@@ -49,6 +50,7 @@
                     @defining(ratings.get(song.id)) { rating =>
                         <div class='@songClasses(rating.map(_._1))' id='@song.id'>
                             <div class='song-name'>@song.name</div>
+
                             <div>
                                 <span class='rater'>@rater(rating.map(_._1))</span>
                                 <textarea class='comment' rows='2' cols='48'>@rating.map(_._2)</textarea>

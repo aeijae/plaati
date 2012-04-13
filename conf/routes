@@ -24,7 +24,7 @@ GET     /songs/:songId                      controllers.MusicController.songById
 
 GET     /rating                             controllers.RatingController.ratings
 GET     /rating/song/:songId                controllers.RatingController.ratingsForSong(songId: Int)
-POST    /rating/:songId/$rating<10|[0-9]|-1>    controllers.RatingController.rateSong(songId: Int, rating: Int)
+POST    /rating/:songId/$rating<10|[0-9]>    controllers.RatingController.rateSong(songId: Int, rating: Int)
 POST    /rating/:songId                     controllers.RatingController.addComment(songId: Int)
 
 GET     /stats                              controllers.ResultsController.allStats

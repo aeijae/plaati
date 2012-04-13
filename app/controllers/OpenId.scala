@@ -11,8 +11,6 @@ import org.expressme.openid.{Base64, OpenIdManager, OpenIdException}
 
 object OpenId extends Controller {
 
-  val ONE_HOUR = 3600000L
-  val TWO_HOUR = ONE_HOUR * 2L
   val ATTR_MAC = "openid_mac"
   val ATTR_ALIAS = "openid_alias"
 
@@ -68,6 +66,9 @@ object OpenId extends Controller {
   }
 
   def checkNonce(nonce: String) {
+    val ONE_HOUR = 3600000L
+    val TWO_HOUR = ONE_HOUR * 2L
+
     if (nonce == null || nonce.length < 20)
       throw new OpenIdException("Verify failed.")
 
@@ -96,6 +97,7 @@ object OpenId extends Controller {
 }
 
 class RequestWrapper(request: Request[AnyContent]) {
+
   def getParameter(name: String) = {
     request.queryString.get(name) match {
       case Some(Seq(p: String)) => p
